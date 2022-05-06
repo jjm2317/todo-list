@@ -18,7 +18,8 @@
     "baseUrl": "src",
     "paths": {
       "test-utils": ["./test-utils"]
-    }
+    },
+    "typeRoots": ["./node_modules/@types", "src/types"]
   },
   "include": ["src"]
 }
