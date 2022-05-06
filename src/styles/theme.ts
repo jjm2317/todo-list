@@ -1,12 +1,14 @@
 import { css } from 'styled-components';
 
-const color = Object.freeze({});
+const color = Object.freeze({
+  black: '#252A31',
+});
 
 const typography = Object.freeze({
   h1: css`
     font-size: 50px;
     font-weight: 700;
-    line-height: 70px;
+    line-height: 60px;
   `,
   h2: css`
     font-size: 30px;
@@ -14,7 +16,7 @@ const typography = Object.freeze({
     line-height: 45px;
   `,
   subtitle1: css`
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 400;
     line-height: 40px;
   `,
