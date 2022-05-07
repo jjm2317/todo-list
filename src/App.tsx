@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
-import GlobalStyles from './GlobalStyles';
+import MainPage from 'pages/main/MainPage';
 
 function App() {
   return (
     <Fragment>
-      <GlobalStyles />
+      <MainPage />
     </Fragment>
   );
 }

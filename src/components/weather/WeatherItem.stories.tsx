@@ -17,6 +17,5 @@ export const Default = Template.bind({});
 Default.args = {
   datetime: 1000,
   iconSrc: WEATHER_ICON,
-  minTemp: 32,
-  maxTemp: 40,
+  temp: 32,
 };

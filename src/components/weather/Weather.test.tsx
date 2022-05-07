@@ -8,8 +8,7 @@ import WeatherList, { ITEM_GAP, ITEM_WIDTH } from './WeatherList';
 const weatherData: WeatherViewProps = {
   datetime: 1651892400000,
   iconSrc: WEATHER_ICON,
-  minTemp: 20,
-  maxTemp: 35,
+  temp: 35,
 };
 
 Element.prototype.scrollTo = jest.fn();
@@ -33,7 +32,7 @@ describe('날씨 섹션의 동작을 테스트합니다.', () => {
     it('기온 정보를 렌더링합니다.', () => {
       render(<WeatherItem {...weatherData} />);
       const temperature = screen.getByTestId('temperature');
-      expect(temperature).toHaveTextContent('35도/20도');
+      expect(temperature).toHaveTextContent('35도');
     });
   });
 

@@ -2,7 +2,6 @@ import React from 'react';
 import { WeatherViewProps } from 'model/weather';
 import styled from 'styled-components';
 import Typography from 'components/typography/Typography';
-import { ITEM_WIDTH } from './WeatherList';
 
 const weekDays: Array<string> = ['일', '월', '화', '수', '목', '금', '토'];
 
@@ -11,12 +10,7 @@ const timeFormat = (datetime: number): string => {
   return `${date.getMonth() + 1}/${date.getDate()}(${weekDays[date.getDay()]})`;
 };
 
-const WeatherItem = ({
-  datetime,
-  iconSrc,
-  minTemp,
-  maxTemp,
-}: WeatherViewProps) => {
+const WeatherItem = ({ datetime, iconSrc, temp }: WeatherViewProps) => {
   return (
     <Wrapper>
       <Typography
@@ -29,9 +23,7 @@ const WeatherItem = ({
       </Typography>
       <Icon src={iconSrc} alt="weather status" width="90%" height="auto" />
       <Typography as="p" type="b2" data-testid="temperature">
-        <b>{maxTemp}도</b>
-        <span>/</span>
-        <b>{minTemp}도</b>
+        <b>{temp}도</b>
       </Typography>
     </Wrapper>
   );
@@ -41,7 +33,7 @@ export default WeatherItem;
 
 const Wrapper = styled.li`
   box-sizing: border-box;
-  width: ${ITEM_WIDTH}px;
+  width: 70px;
   height: 100px;
   display: flex;
   flex-direction: column;

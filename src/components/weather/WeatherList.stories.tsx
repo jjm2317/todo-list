@@ -18,8 +18,7 @@ Default.args = {
   weatherList: Array.from({ length: 7 }, () => ({
     datetime: 1000,
     iconSrc: WEATHER_ICON,
-    minTemp: 32,
-    maxTemp: 40,
+    temp: 32,
   })),
   todayIndex: 0,
 };
