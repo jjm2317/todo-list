@@ -16,6 +16,7 @@ export const Overview: ComponentStory<typeof TodoItem> = () => (
       todo="todo"
       dueDate={new Date().toISOString()}
       onChange={() => {}}
+      onDeleteButtonClick={() => {}}
     />
     <TodoItem
       id={1}
@@ -23,6 +24,7 @@ export const Overview: ComponentStory<typeof TodoItem> = () => (
       todo="todo"
       dueDate={new Date(new Date().getTime() + 1000000000).toISOString()}
       onChange={() => {}}
+      onDeleteButtonClick={() => {}}
     />
     <TodoItem
       id={1}
@@ -30,6 +32,7 @@ export const Overview: ComponentStory<typeof TodoItem> = () => (
       todo="todo"
       dueDate={new Date().toISOString()}
       onChange={() => {}}
+      onDeleteButtonClick={() => {}}
     />
     <TodoItem
       id={1}
@@ -37,6 +40,7 @@ export const Overview: ComponentStory<typeof TodoItem> = () => (
       todo="todo"
       dueDate={undefined}
       onChange={() => {}}
+      onDeleteButtonClick={() => {}}
     />
     <TodoItem
       id={1}
@@ -44,6 +48,7 @@ export const Overview: ComponentStory<typeof TodoItem> = () => (
       todo="todo"
       dueDate={undefined}
       onChange={() => {}}
+      onDeleteButtonClick={() => {}}
     />
   </Container>
 );
@@ -58,6 +63,7 @@ Default.args = {
   onChange: () => {},
   checked: false,
   dueDate: new Date().toISOString(),
+  onDeleteButtonClick: () => {},
 };
 
 const Container = styled.div`

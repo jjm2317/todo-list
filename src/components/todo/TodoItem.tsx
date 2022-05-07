@@ -1,4 +1,4 @@
-import { ChangeEventHandler } from 'react';
+import { ChangeEventHandler, MouseEventHandler } from 'react';
 import Typography from 'components/typography/Typography';
 import styled, { css } from 'styled-components';
 import CHECK from 'images/icon-check.svg';
@@ -10,6 +10,7 @@ interface TodoItemProps {
   onChange: ChangeEventHandler<HTMLInputElement>;
   dueDate?: string;
   todo: string;
+  onDeleteButtonClick: MouseEventHandler<HTMLButtonElement>;
 }
 
 const dateFormat = (date: Date) => {
@@ -26,40 +27,57 @@ const isExpired = (dueDate: Date) => {
   return dateFormat(date) >= dateFormat(dueDate);
 };
 
-const TodoItem = ({ id, checked, onChange, dueDate, todo }: TodoItemProps) => (
-  <Wrapper>
-    <Input
-      name={`${id}`}
-      type="checkbox"
-      checked={checked}
-      onChange={onChange}
-    />
-    <Label htmlFor={`${id}`} />
-    <Todo
-      as="label"
-      type="b1"
-      data-testid="todo-wrapper"
-      color={
-        dueDate && !checked && isExpired(new Date(dueDate)) ? 'red' : 'black'
-      }
-      fontFamily="Noto Sans KR"
-      fontWeight={500}
-      htmlFor={`${id}`}
-    >
-      <TodoText hasStrike={checked} data-testid="todo">
-        {todo}
-      </TodoText>
-      {'\n'}
-      {dueDate && (
-        <DueDate data-testid="due-date">
-          due date {dateFormat(new Date(dueDate))}
-        </DueDate>
-      )}
-    </Todo>
-  </Wrapper>
+const TodoItem = ({
+  id,
+  checked,
+  onChange,
+  onDeleteButtonClick,
+  dueDate,
+  todo,
+}: TodoItemProps) => (
+  <Item>
+    <Wrapper>
+      <Input
+        name={`${id}`}
+        type="checkbox"
+        checked={checked}
+        onChange={onChange}
+      />
+      <Label htmlFor={`${id}`} />
+      <Todo
+        as="label"
+        type="b1"
+        data-testid="todo-wrapper"
+        color={
+          dueDate && !checked && isExpired(new Date(dueDate)) ? 'red' : 'black'
+        }
+        fontFamily="Noto Sans KR"
+        fontWeight={500}
+        htmlFor={`${id}`}
+      >
+        <TodoText hasStrike={checked} data-testid="todo">
+          {todo}
+        </TodoText>
+        {'\n'}
+        {dueDate && (
+          <DueDate data-testid="due-date">
+            due date {dateFormat(new Date(dueDate))}
+          </DueDate>
+        )}
+      </Todo>
+    </Wrapper>
+    <DeleteButton onClick={onDeleteButtonClick}>X</DeleteButton>
+  </Item>
 );
 
 export default TodoItem;
+
+const Item = styled.li`
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 const Wrapper = styled.div`
   display: flex;
@@ -97,6 +115,7 @@ const Todo = styled(Typography)`
   line-height: 30px;
   cursor: pointer;
   margin-left: 15px;
+  margin-top: -2px;
   white-space: pre-wrap;
 `;
 
@@ -114,4 +133,19 @@ const TodoText = styled.span<TodoTextProps>`
 const DueDate = styled.strong`
   ${({ theme }) => theme.typography.caption}
   font-family: Poppins;
+`;
+
+const DeleteButton = styled.button`
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  font-family: Poppins;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: ${({ theme }) => theme.color.lightgrey};
+  background-color: ${({ theme }) => theme.color.white};
+  border: none;
 `;

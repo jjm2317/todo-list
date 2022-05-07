@@ -12,6 +12,7 @@ describe('Todo 섹션의 동작을 테스트합니다.', () => {
           todo="todo"
           dueDate={undefined}
           onChange={() => {}}
+          onDeleteButtonClick={() => {}}
         />,
       );
 
@@ -29,6 +30,7 @@ describe('Todo 섹션의 동작을 테스트합니다.', () => {
           todo="todo"
           dueDate={new Date().toISOString()}
           onChange={() => {}}
+          onDeleteButtonClick={() => {}}
         />,
       );
       const dueDate = screen.getByTestId('due-date');
@@ -46,6 +48,7 @@ describe('Todo 섹션의 동작을 테스트합니다.', () => {
           todo="todo"
           dueDate={new Date().toISOString()}
           onChange={() => {}}
+          onDeleteButtonClick={() => {}}
         />,
       );
 
@@ -60,6 +63,7 @@ describe('Todo 섹션의 동작을 테스트합니다.', () => {
           todo="todo"
           dueDate={new Date().toISOString()}
           onChange={() => {}}
+          onDeleteButtonClick={() => {}}
         />,
       );
       const todo = screen.getByTestId('todo-wrapper');
@@ -75,11 +79,28 @@ describe('Todo 섹션의 동작을 테스트합니다.', () => {
           todo="todo"
           dueDate={new Date(previousDay).toISOString()}
           onChange={() => {}}
+          onDeleteButtonClick={() => {}}
         />,
       );
 
       const previousTodo = screen.getByTestId('todo-wrapper');
       expect(previousTodo).toHaveStyle({ color: '#FF0000' });
+    });
+
+    it('x 버튼을 렌더링합니다.', () => {
+      render(
+        <TodoItem
+          id={1}
+          checked={false}
+          todo="todo"
+          dueDate={new Date().toISOString()}
+          onChange={() => {}}
+          onDeleteButtonClick={() => {}}
+        />,
+      );
+      const deleteButton = screen.getByRole('button', { name: 'X' });
+
+      expect(deleteButton).toBeInTheDocument();
     });
   });
 });
