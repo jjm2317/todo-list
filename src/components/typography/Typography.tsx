@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-interface TypographyInterface {
+interface TypographyProps {
   type: 'h1' | 'h2' | 'subtitle1' | 'b1' | 'b2' | 'caption';
   fontFamily?: 'Noto Sans KR' | 'Poppins';
   fontWeight?: 300 | 400 | 500 | 600 | 700 | 800;
@@ -8,7 +8,7 @@ interface TypographyInterface {
   textAlign?: 'left' | 'center' | 'right';
 }
 
-const Typography = styled.span<TypographyInterface>`
+const Typography = styled.span<TypographyProps>`
   ${({ theme, type }) => theme.typography[type]};
   font-family: ${({ fontFamily }) => fontFamily || 'Poppins'};
   text-align: ${({ textAlign }) => textAlign || 'left'};
