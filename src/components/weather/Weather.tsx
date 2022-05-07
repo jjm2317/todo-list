@@ -61,7 +61,7 @@ const Weather = () => {
       try {
         const previousDayList = Array.from(
           { length: Math.min(dayIndex, 5) },
-          (_, index) => dayIndex - index,
+          (_, index) => Math.min(dayIndex, 5) - index,
         ).map((day) => new Date().setDate(date.getDate() - day));
 
         const [forecasts, ...histories] = await Promise.all([
