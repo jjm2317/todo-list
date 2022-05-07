@@ -3,13 +3,10 @@ import Typography from 'components/typography/Typography';
 import styled, { css } from 'styled-components';
 import CHECK from 'images/icon-check.svg';
 import { a11yHidden } from 'styles/a11y';
+import { TodoInfo } from 'model/todo';
 
-interface TodoItemProps {
-  id: number;
-  checked: boolean;
+interface TodoItemProps extends TodoInfo {
   onChange: ChangeEventHandler<HTMLInputElement>;
-  dueDate?: string;
-  todo: string;
   onDeleteButtonClick: MouseEventHandler<HTMLButtonElement>;
 }
 
