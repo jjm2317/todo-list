@@ -2,6 +2,12 @@ import { css } from 'styled-components';
 
 const color = Object.freeze({
   black: '#252A31',
+  bg_dark: '#192A3E',
+  white: '#FFFFFF',
+  grey: '#444444',
+  lightgrey: '#CCCCCC',
+  blue: '#0000FF',
+  red: '#FF0000',
 });
 
 const typography = Object.freeze({
