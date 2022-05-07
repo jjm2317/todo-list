@@ -2,6 +2,7 @@ import React from 'react';
 import { WeatherViewProps } from 'model/weather';
 import styled from 'styled-components';
 import Typography from 'components/typography/Typography';
+import { ITEM_WIDTH } from './WeatherList';
 
 const weekDays: Array<string> = ['일', '월', '화', '수', '목', '금', '토'];
 
@@ -39,7 +40,8 @@ const WeatherItem = ({
 export default WeatherItem;
 
 const Wrapper = styled.li`
-  width: 70px;
+  box-sizing: border-box;
+  width: ${ITEM_WIDTH}px;
   height: 100px;
   display: flex;
   flex-direction: column;
