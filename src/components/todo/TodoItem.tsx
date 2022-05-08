@@ -110,6 +110,7 @@ const Input = styled.input`
 `;
 
 const Todo = styled(Typography)`
+  min-width: 100px;
   display: flex;
   flex-direction: column;
   line-height: 30px;

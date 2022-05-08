@@ -33,7 +33,7 @@ const Form = ({
   return (
     <Wrapper>
       <Typography type="subtitle1" as="label" htmlFor="todo-title">
-        제목
+        제목(필수)
       </Typography>
       <TextInput
         id="todo-title"
@@ -42,7 +42,7 @@ const Form = ({
         placeholder="제목을 입력해주세요"
       />
       <Typography type="subtitle1" as="label" htmlFor="todo-content">
-        내용
+        내용(필수)
       </Typography>
       <TextArea
         id="todo-content"
@@ -59,7 +59,12 @@ const Form = ({
         placeholder="날짜를 입력해주세요(클릭)"
         selectedDate={dueDate}
       />
-      <SaveButton onClick={onSaveButtonClick}>저장하기</SaveButton>
+      <SaveButton
+        disabled={todo === '' || content === ''}
+        onClick={onSaveButtonClick}
+      >
+        저장하기
+      </SaveButton>
     </Wrapper>
   );
 };
@@ -73,6 +78,11 @@ const Wrapper = styled.form`
 
 const SaveButton = styled(Button)`
   margin-top: 15px;
+  &:disabled {
+    cursor: default;
+    background-color: ${({ theme }) => theme.color.lightgrey};
+    color: ${({ theme }) => theme.color.grey};
+  }
 `;
 
 interface ModifyFormProps {
