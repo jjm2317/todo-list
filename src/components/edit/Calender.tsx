@@ -9,7 +9,7 @@ import Button from 'components/button/Button';
 interface CalendarProps {
   onConfirm: Function;
   onCancle: MouseEventHandler<HTMLButtonElement>;
-  selectedDate: Date;
+  selectedDate?: Date;
 }
 
 const Calendar = ({ onConfirm, onCancle, selectedDate }: CalendarProps) => {
@@ -41,16 +41,17 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 411px;
+  min-height: 300px;
+  padding-bottom: 10px;
   border-radius: 12px;
   color: ${({ theme }) => theme.color.bg_dark};
   background-color: ${({ theme }) => theme.color.white};
 
-  --rdp-cell-size: 35px;
+  --rdp-cell-size: 30px;
   --rdp-background-color: ${({ theme }) => theme.color.lightgrey};
   --rdp-outline-selected: none;
-  --rdp-outline: none;
   font-family: Poppins;
+  border: 1px solid ${({ theme }) => theme.color.lightgrey};
 `;
 
 const ButtonWrapper = styled.div`
