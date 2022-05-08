@@ -139,7 +139,9 @@ export const ModifyForm = ({ todoId }: ModifyFormProps) => {
 export const CreateForm = () => {
   const [todoList, setTodoList] = useLocalStorage('todo', []);
   const todoId = useRef(
-    Math.max(...todoList.map((todo: TodoInfo) => todo.id)) + 1,
+    todoList.length
+      ? Math.max(...todoList.map((todo: TodoInfo) => todo.id)) + 1
+      : 1,
   );
   const navigate = useNavigate();
   const [isClicked, setIsClicked] = useState<boolean>(false);
