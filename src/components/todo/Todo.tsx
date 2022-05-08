@@ -73,6 +73,9 @@ const Wrapper = styled.section``;
 const List = styled.ul`
   width: 80%;
   margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 `;
 
 const FlexBox = styled.div`
