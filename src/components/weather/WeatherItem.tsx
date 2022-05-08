@@ -31,7 +31,7 @@ const WeatherItem = ({
     </Typography>
     <Icon src={iconSrc} alt="weather status" width="90%" height="auto" />
     <Typography as="p" type="b2" data-testid="temperature">
-      <b>{temp}도</b>
+      <b>{Math.floor(temp)}도</b>
     </Typography>
   </Wrapper>
 );
