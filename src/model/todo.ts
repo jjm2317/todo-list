@@ -3,4 +3,5 @@ export interface TodoInfo {
   checked: boolean;
   dueDate?: string;
   todo: string;
+  content?: string;
 }

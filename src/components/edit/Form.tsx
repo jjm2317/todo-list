@@ -4,6 +4,7 @@ import TextArea from 'components/input/TextArea';
 import TextInput from 'components/input/TextInput';
 import Typography from 'components/typography/Typography';
 import useLocalStorage from 'hooks/useLocalStorage';
+import useTodoForm from 'hooks/useTodoForm';
 import { TodoInfo } from 'model/todo';
 import { useCallback, useEffect, useState } from 'react';
 import { ChangeEventHandler, MouseEventHandler } from 'react';
@@ -81,21 +82,15 @@ export const ModifyForm = ({ todoId }: ModifyFormProps) => {
   const [todoList, setTodoList] = useLocalStorage('todo', []);
   const curTodo = todoList.find((todo: TodoInfo) => todo?.id === todoId);
   const navigate = useNavigate();
-  const [todoTitle, setTodoTitle] = useState<string>(curTodo.todo);
-  const [content, setContent] = useState<string>(curTodo.content);
-  const [dueDate, setDueDate] = useState<string>(curTodo.dueDate);
   const [isClicked, setIsClicked] = useState<boolean>(false);
-  const handleTodoChange = useCallback((e) => {
-    setTodoTitle(e.target.value);
-  }, []);
-
-  const handleContentChange = useCallback((e) => {
-    setContent(e.target.value);
-  }, []);
-
-  const handleDueDateChange = useCallback((date) => {
-    setDueDate(date.toISOString());
-  }, []);
+  const {
+    todoTitle,
+    content,
+    dueDate,
+    handleTodoChange,
+    handleContentChange,
+    handleDueDateChange,
+  } = useTodoForm(curTodo);
 
   const handleSaveButtonClick = useCallback(
     (e) => {
