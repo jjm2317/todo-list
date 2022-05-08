@@ -77,6 +77,9 @@ export const useWeatherListQuery = () => {
           ...selectWeatherInfosFromForecasts(forecasts, 7 - dayIndex),
         ]);
       },
+      // enable caching for 10hours
+      staleTime: 36000000,
+      cacheTime: 36000000,
     },
   );
 };
