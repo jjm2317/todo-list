@@ -6,7 +6,7 @@ import Typography from 'components/typography/Typography';
 import useLocalStorage from 'hooks/useLocalStorage';
 import useTodoForm from 'hooks/useTodoForm';
 import { TodoInfo } from 'model/todo';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { ChangeEventHandler, MouseEventHandler } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
@@ -127,5 +127,52 @@ export const ModifyForm = ({ todoId }: ModifyFormProps) => {
 };
 
 export const CreateForm = () => {
-  return <></>;
+  const [todoList, setTodoList] = useLocalStorage('todo', []);
+  const todoId = useRef(
+    Math.max(...todoList.map((todo: TodoInfo) => todo.id)) + 1,
+  );
+  const navigate = useNavigate();
+  const [isClicked, setIsClicked] = useState<boolean>(false);
+  const {
+    todoTitle,
+    content,
+    dueDate,
+    handleTodoChange,
+    handleContentChange,
+    handleDueDateChange,
+  } = useTodoForm(undefined);
+
+  const handleSaveButtonClick = useCallback(
+    (e) => {
+      e.preventDefault();
+      setTodoList((todos: Array<TodoInfo>) =>
+        todos.concat({
+          id: todoId.current,
+          todo: todoTitle,
+          content,
+          dueDate,
+          checked: false,
+        }),
+      );
+      setIsClicked(true);
+    },
+    [todoId, setTodoList, todoTitle, content, dueDate],
+  );
+
+  useEffect(() => {
+    if (isClicked) {
+      navigate('/');
+    }
+  }, [isClicked, navigate]);
+  return (
+    <Form
+      todo={todoTitle}
+      onTodoChange={handleTodoChange}
+      content={content}
+      onContentChange={handleContentChange}
+      dueDate={dueDate ? new Date(dueDate) : undefined}
+      onDueDateChange={handleDueDateChange}
+      onSaveButtonClick={handleSaveButtonClick}
+    />
+  );
 };
