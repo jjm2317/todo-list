@@ -5,6 +5,9 @@ import CHECK from 'images/icon-check.svg';
 import { a11yHidden } from 'styles/a11y';
 import { TodoInfo } from 'model/todo';
 
+const img = new Image();
+img.src = CHECK;
+
 interface TodoItemProps extends TodoInfo {
   onChange: ChangeEventHandler<HTMLInputElement>;
   onDeleteButtonClick: MouseEventHandler<HTMLButtonElement>;
