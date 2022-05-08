@@ -16,7 +16,7 @@ const useTodoForm = (curTodo: TodoInfo | undefined) => {
   }, []);
 
   const handleDueDateChange = useCallback((date) => {
-    setDueDate(date.toISOString());
+    setDueDate(date ? date.toISOString() : '');
   }, []);
   return {
     todoTitle,

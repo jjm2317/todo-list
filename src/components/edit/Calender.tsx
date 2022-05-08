@@ -27,7 +27,13 @@ const Calendar = ({ onConfirm, onCancle, selectedDate }: CalendarProps) => {
         >
           취소
         </Button>
-        <Button onClick={() => onConfirm(date)} width="60px">
+        <Button
+          onClick={(e) => {
+            e.preventDefault();
+            onConfirm(date);
+          }}
+          width="60px"
+        >
           확인
         </Button>
       </ButtonWrapper>
