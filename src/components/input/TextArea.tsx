@@ -3,13 +3,19 @@ import styled from 'styled-components';
 import { inputStyles } from './styles';
 
 interface TextAreaProps {
+  id: string;
   value: string;
   onChange: ChangeEventHandler<HTMLTextAreaElement>;
   placeholder?: string;
 }
 
-const TextArea = ({ value, onChange, placeholder }: TextAreaProps) => (
-  <Textarea value={value} placeholder={placeholder} onChange={onChange} />
+const TextArea = ({ id, value, onChange, placeholder }: TextAreaProps) => (
+  <Textarea
+    id={id}
+    value={value}
+    placeholder={placeholder}
+    onChange={onChange}
+  />
 );
 
 export default TextArea;
