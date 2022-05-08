@@ -7,14 +7,28 @@ import reportWebVitals from './reportWebVitals';
 import GlobalStyles from './styles/GlobalStyles';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './styles/theme';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: false,
+      staleTime: 30000,
+      notifyOnChangeProps: 'tracked',
+    },
+  },
+});
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        <App />
-      </ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyles />
+          <App />
+        </ThemeProvider>
+      </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root') as HTMLElement,
