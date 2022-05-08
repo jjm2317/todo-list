@@ -17,7 +17,7 @@ Default.args = {
   onTodoChange: () => {},
   content: '',
   onContentChange: () => {},
-  dueDate: '',
+  dueDate: undefined,
   onDueDateChange: () => {},
   onSaveButtonClick: () => {},
 };

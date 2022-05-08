@@ -9,6 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/todos/new" element={<EditPage />} />
+        <Route path="/todos/:todoId" element={<EditPage />} />
       </Routes>
     </Fragment>
   );
