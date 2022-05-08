@@ -8,6 +8,12 @@ export default {
   component: TodoItem,
 } as ComponentMeta<typeof TodoItem>;
 
+const eventHandlers = {
+  onChange: () => {},
+  onDeleteButtonClick: () => {},
+  onTodoClick: () => {},
+};
+
 export const Overview: ComponentStory<typeof TodoItem> = () => (
   <Container>
     <TodoItem
@@ -15,40 +21,35 @@ export const Overview: ComponentStory<typeof TodoItem> = () => (
       checked={false}
       todo="todo"
       dueDate={new Date().toISOString()}
-      onChange={() => {}}
-      onDeleteButtonClick={() => {}}
+      {...eventHandlers}
     />
     <TodoItem
       id={1}
       checked={false}
       todo="todo"
       dueDate={new Date(new Date().getTime() + 1000000000).toISOString()}
-      onChange={() => {}}
-      onDeleteButtonClick={() => {}}
+      {...eventHandlers}
     />
     <TodoItem
       id={1}
       checked={true}
       todo="todo"
       dueDate={new Date().toISOString()}
-      onChange={() => {}}
-      onDeleteButtonClick={() => {}}
+      {...eventHandlers}
     />
     <TodoItem
       id={1}
       checked={false}
       todo="todo"
       dueDate={undefined}
-      onChange={() => {}}
-      onDeleteButtonClick={() => {}}
+      {...eventHandlers}
     />
     <TodoItem
       id={1}
       checked={true}
       todo="todo"
       dueDate={undefined}
-      onChange={() => {}}
-      onDeleteButtonClick={() => {}}
+      {...eventHandlers}
     />
   </Container>
 );

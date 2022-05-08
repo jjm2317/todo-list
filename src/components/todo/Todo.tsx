@@ -36,6 +36,13 @@ const Todo = () => {
     [setTodoList],
   );
 
+  const handleTodoClick = useCallback(
+    (todoId) => () => {
+      navigate(`/todos/${todoId}`);
+    },
+    [navigate],
+  );
+
   return (
     <Wrapper>
       <Typography as="h2" type="h2">
@@ -50,6 +57,7 @@ const Todo = () => {
               {...todo}
               onChange={handleChange(todo.id)}
               onDeleteButtonClick={handleDeletButtonClick(todo.id)}
+              onTodoClick={handleTodoClick(todo.id)}
             />
           ))}
         </List>

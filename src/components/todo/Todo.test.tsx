@@ -4,6 +4,12 @@ import TodoItem from './TodoItem';
 
 describe('Todo 섹션의 동작을 테스트합니다.', () => {
   describe('TodoItem 컴포넌트의 동작을 테스트합니다.', () => {
+    const eventHandlers = {
+      onChange: () => {},
+      onDeleteButtonClick: () => {},
+      onTodoClick: () => {},
+    };
+
     it('체크박스와 투두 내용을 렌더링합니다.', () => {
       render(
         <TodoItem
@@ -11,8 +17,7 @@ describe('Todo 섹션의 동작을 테스트합니다.', () => {
           checked={false}
           todo="todo"
           dueDate={undefined}
-          onChange={() => {}}
-          onDeleteButtonClick={() => {}}
+          {...eventHandlers}
         />,
       );
 
@@ -29,8 +34,7 @@ describe('Todo 섹션의 동작을 테스트합니다.', () => {
           checked={false}
           todo="todo"
           dueDate={new Date().toISOString()}
-          onChange={() => {}}
-          onDeleteButtonClick={() => {}}
+          {...eventHandlers}
         />,
       );
       const dueDate = screen.getByTestId('due-date');
@@ -47,8 +51,7 @@ describe('Todo 섹션의 동작을 테스트합니다.', () => {
           checked
           todo="todo"
           dueDate={new Date().toISOString()}
-          onChange={() => {}}
-          onDeleteButtonClick={() => {}}
+          {...eventHandlers}
         />,
       );
 
@@ -62,8 +65,7 @@ describe('Todo 섹션의 동작을 테스트합니다.', () => {
           checked={false}
           todo="todo"
           dueDate={new Date().toISOString()}
-          onChange={() => {}}
-          onDeleteButtonClick={() => {}}
+          {...eventHandlers}
         />,
       );
       const todo = screen.getByTestId('todo-wrapper');
@@ -78,8 +80,7 @@ describe('Todo 섹션의 동작을 테스트합니다.', () => {
           checked={false}
           todo="todo"
           dueDate={new Date(previousDay).toISOString()}
-          onChange={() => {}}
-          onDeleteButtonClick={() => {}}
+          {...eventHandlers}
         />,
       );
 
@@ -94,8 +95,7 @@ describe('Todo 섹션의 동작을 테스트합니다.', () => {
           checked={false}
           todo="todo"
           dueDate={new Date().toISOString()}
-          onChange={() => {}}
-          onDeleteButtonClick={() => {}}
+          {...eventHandlers}
         />,
       );
       const deleteButton = screen.getByRole('button', { name: 'X' });

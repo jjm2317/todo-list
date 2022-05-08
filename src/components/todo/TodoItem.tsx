@@ -8,6 +8,7 @@ import { TodoInfo } from 'model/todo';
 interface TodoItemProps extends TodoInfo {
   onChange: ChangeEventHandler<HTMLInputElement>;
   onDeleteButtonClick: MouseEventHandler<HTMLButtonElement>;
+  onTodoClick: MouseEventHandler<HTMLParagraphElement>;
 }
 
 const dateFormat = (date: Date) => {
@@ -29,6 +30,7 @@ const TodoItem = ({
   checked,
   onChange,
   onDeleteButtonClick,
+  onTodoClick,
   dueDate,
   todo,
 }: TodoItemProps) => (
@@ -43,6 +45,7 @@ const TodoItem = ({
       />
       <Label htmlFor={`${id}`} />
       <Todo
+        onClick={onTodoClick}
         as="p"
         type="b1"
         data-testid="todo-wrapper"
