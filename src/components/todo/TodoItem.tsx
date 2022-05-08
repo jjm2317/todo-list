@@ -43,7 +43,7 @@ const TodoItem = ({
       />
       <Label htmlFor={`${id}`} />
       <Todo
-        as="label"
+        as="p"
         type="b1"
         data-testid="todo-wrapper"
         color={
@@ -51,7 +51,6 @@ const TodoItem = ({
         }
         fontFamily="Noto Sans KR"
         fontWeight={500}
-        htmlFor={`${id}`}
       >
         <TodoText hasStrike={checked} data-testid="todo">
           {todo}

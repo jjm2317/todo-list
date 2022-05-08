@@ -3,11 +3,18 @@ import Typography from 'components/typography/Typography';
 import useLocalStorage from 'hooks/useLocalStorage';
 import { TodoInfo } from 'model/todo';
 import { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import TodoItem from './TodoItem';
 
 const Todo = () => {
   const [todoList, setTodoList] = useLocalStorage('todo', []);
+
+  const navigate = useNavigate();
+
+  const handleAddButtonClick = useCallback(() => {
+    navigate('/todos/new');
+  }, [navigate]);
 
   const handleChange = useCallback(
     (id: number) => () => {
@@ -35,7 +42,7 @@ const Todo = () => {
         이번주 To-Do
       </Typography>
       <FlexBox>
-        <Button>추가하기</Button>
+        <Button onClick={handleAddButtonClick}>추가하기</Button>
         <List>
           {todoList.map((todo: TodoInfo) => (
             <TodoItem
