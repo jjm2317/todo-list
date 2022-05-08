@@ -19,7 +19,7 @@ const Weather = () => {
         {isLoading || !weathers ? (
           <LoadingWrapper>
             <Typography type="b1" textAlign="center">
-              {!isError
+              {isError
                 ? `데이터를 불러오는데 실패했습니다. \n새로고침하거나 잠시 후 다시 시도해주세요.`
                 : 'Loading....'}
             </Typography>
