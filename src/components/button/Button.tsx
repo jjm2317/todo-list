@@ -13,6 +13,7 @@ const Button = styled.button<ButtonProps>`
   ${({ theme }) => theme.typography.b1}
   font-weight: 500;
   font-family: Noto Sans KR;
+  cursor: pointer;
 `;
 
 export default Button;

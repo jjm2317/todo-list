@@ -35,6 +35,7 @@ const TodoItem = ({
   <Item>
     <Wrapper>
       <Input
+        id={`${id}`}
         name={`${id}`}
         type="checkbox"
         checked={checked}
@@ -142,7 +143,7 @@ const DeleteButton = styled.button`
   align-content: center;
   cursor: pointer;
   font-size: 14px;
-  color: ${({ theme }) => theme.color.lightgrey};
+  color: ${({ theme }) => theme.color.grey};
   background-color: ${({ theme }) => theme.color.white};
   border: none;
 `;

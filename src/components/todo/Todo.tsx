@@ -2,11 +2,32 @@ import Button from 'components/button/Button';
 import Typography from 'components/typography/Typography';
 import useLocalStorage from 'hooks/useLocalStorage';
 import { TodoInfo } from 'model/todo';
+import { useCallback } from 'react';
 import styled from 'styled-components';
 import TodoItem from './TodoItem';
 
 const Todo = () => {
   const [todoList, setTodoList] = useLocalStorage('todo', []);
+
+  const handleChange = useCallback(
+    (id: number) => () => {
+      setTodoList((todoList: Array<TodoInfo>) =>
+        todoList.map((todo) =>
+          todo.id === id ? { ...todo, checked: !todo.checked } : todo,
+        ),
+      );
+    },
+    [setTodoList],
+  );
+
+  const handleDeletButtonClick = useCallback(
+    (id: number) => () => {
+      setTodoList((todoList: Array<TodoInfo>) =>
+        todoList.filter((todo) => todo.id !== id),
+      );
+    },
+    [setTodoList],
+  );
 
   return (
     <Wrapper>
@@ -20,8 +41,8 @@ const Todo = () => {
             <TodoItem
               key={todo.id}
               {...todo}
-              onChange={() => {}}
-              onDeleteButtonClick={() => {}}
+              onChange={handleChange(todo.id)}
+              onDeleteButtonClick={handleDeletButtonClick(todo.id)}
             />
           ))}
         </List>
