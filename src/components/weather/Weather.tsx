@@ -8,7 +8,7 @@ const date = new Date();
 const dayIndex = (date.getDay() + 6) % 7;
 
 const Weather = () => {
-  const { data: weathers, isLoading } = useWeatherListQuery();
+  const { data: weathers, isLoading, isError } = useWeatherListQuery();
 
   return (
     <Container>
@@ -18,7 +18,11 @@ const Weather = () => {
       <Wrapper>
         {isLoading || !weathers ? (
           <LoadingWrapper>
-            <Typography type="b1">Loading....</Typography>
+            <Typography type="b1" textAlign="center">
+              {!isError
+                ? `데이터를 불러오는데 실패했습니다. \n새로고침하거나 잠시 후 다시 시도해주세요.`
+                : 'Loading....'}
+            </Typography>
           </LoadingWrapper>
         ) : (
           <WeatherList
@@ -33,8 +37,6 @@ const Weather = () => {
 
 export default Weather;
 
-export const WeatherView = () => {};
-
 const Container = styled.section`
   margin: 20px 0;
 `;
@@ -47,4 +49,5 @@ const LoadingWrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
+  white-space: pre-wrap;
 `;
