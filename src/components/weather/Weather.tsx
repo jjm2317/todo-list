@@ -12,12 +12,14 @@ const Weather = () => {
 
   return (
     <Container>
-      <Typography as="h2" type="h2" fontFamily="Noto Sans KR">
+      <Typography as="h2" type="h2">
         이번주 날씨
       </Typography>
       <Wrapper>
         {isLoading || !weathers ? (
-          <div>데이터를 받아오고 있어요.</div>
+          <LoadingWrapper>
+            <Typography type="b1">Loading....</Typography>
+          </LoadingWrapper>
         ) : (
           <WeatherList
             weatherList={weathers}
@@ -33,7 +35,16 @@ export default Weather;
 
 export const WeatherView = () => {};
 
-const Container = styled.section``;
+const Container = styled.section`
+  margin: 20px 0;
+`;
 const Wrapper = styled.div`
-  height: 150px;
+  height: 180px;
+`;
+
+const LoadingWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 `;
