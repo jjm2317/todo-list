@@ -6,8 +6,8 @@ import { WeatherInfo } from 'model/weather';
 
 const SEOUL_LAT = 37.53;
 const SEOUL_LON = 127.02;
-// const APP_KEY2 = '74f4897205eee715f905ac72f67d2d7f';
-const APP_KEY = '6854e4c1298f3e243e87a1b9c2051b83';
+const APP_KEY = '74f4897205eee715f905ac72f67d2d7f';
+// const APP_KEY2 = '6854e4c1298f3e243e87a1b9c2051b83';
 // useless response fields
 const excludes = ['current', 'minutely', 'hourly', 'alerts'];
 
@@ -46,16 +46,18 @@ const fetchWeatherInfo = async (curDate: Date, dayIndex: number) => {
   return results;
 };
 
-const selectWeatherInfosFromForecasts = (
+export const selectWeatherInfosFromForecasts = (
   forecasts: { daily: Array<WeatherInfo> },
   cnt: number,
 ): Array<WeatherInfo> => forecasts.daily.filter((_, index) => index < cnt);
 
-const selectWeatherInfosFromHistories = (
+export const selectWeatherInfosFromHistories = (
   histories: { current: WeatherInfo }[],
 ): Array<WeatherInfo> => histories.map((history) => history.current);
 
-const selectWeatherViewPropsFromInfos = (weatherInfos: Array<WeatherInfo>) =>
+export const selectWeatherViewPropsFromInfos = (
+  weatherInfos: Array<WeatherInfo>,
+) =>
   weatherInfos.map(({ dt, weather, temp }) => ({
     datetime: dt * 1000,
     iconSrc: `http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`,
